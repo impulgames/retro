@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ImpulGames | Portal de instalación</title>
+<meta name="theme-color" content="#10101b">
+<style>
+:root{
+  --bg:#0b0b15; --panel:#151527; --panel2:#1b1b31; --text:#f4f5ff;
+  --muted:#b8bdd5; --cyan:#55f6e5; --pink:#ff5ec4; --yellow:#ffe66d;
+  --purple:#9b7bff; --line:#333451;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:
+  radial-gradient(ellipse at 15% 0%,rgba(94,54,190,.25),transparent 35%),
+  radial-gradient(ellipse at 85% 10%,rgba(18,180,170,.12),transparent 30%),var(--bg);
+  color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+a{color:var(--cyan);text-decoration:none} a:hover{text-decoration:underline}
+button,input{font:inherit}
+.pixel{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;letter-spacing:.04em}
+#gate{min-height:100vh;display:grid;place-items:center;padding:24px}
+.login-card{width:min(100%,460px);padding:34px 28px;background:rgba(21,21,39,.95);border:1px solid #45436d;border-radius:18px;box-shadow:0 0 0 5px rgba(155,123,255,.07),0 20px 70px #0008;text-align:center}
+.brand-mark{font-size:clamp(2.3rem,9vw,4rem);font-weight:1000;line-height:1.05;text-shadow:3px 3px 0 #5c35a7,0 0 25px #9b7bff55;letter-spacing:.04em}
+.brand-mark span{color:var(--cyan)}
+.subtitle{color:var(--muted);margin:14px 0 24px}
+.login-card label{display:block;text-align:left;color:var(--muted);font-size:.9rem;margin-bottom:8px}
+.login-card input{width:100%;padding:14px 16px;border-radius:10px;border:1px solid #45436d;background:#0d0d1b;color:white;outline:none;text-align:center;font-size:1.15rem;letter-spacing:.25em}
+.login-card input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #55f6e522}
+.primary{border:0;width:100%;padding:13px 16px;margin-top:14px;border-radius:10px;background:linear-gradient(90deg,var(--purple),#6752df);color:white;font-weight:800;cursor:pointer;box-shadow:0 7px 20px #6752df44}
+.primary:hover{filter:brightness(1.12)}
+#error{min-height:1.4em;color:#ff7fae;margin:10px 0 0;font-size:.9rem}
+.gate-foot{color:#777b9a;font-size:.8rem;margin-top:20px}
+#site{display:none}
+header{position:sticky;top:0;z-index:20;background:#0c0c18eF;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1100px;margin:auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.small-brand{font-weight:950;letter-spacing:.05em}.small-brand span{color:var(--cyan)}
+nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+nav a{font-size:.88rem;color:var(--text);padding:7px 10px;border:1px solid transparent;border-radius:8px}
+nav a:hover{border-color:var(--line);background:#ffffff08;text-decoration:none}
+main{max-width:1100px;margin:auto;padding:24px 18px 70px}
+.hero{position:relative;overflow:hidden;text-align:center;padding:48px 20px 38px;border:1px solid #424064;border-radius:20px;background:linear-gradient(140deg,#1a1935,#15152a 60%,#11282a);margin:16px 0 28px}
+.hero:after{content:"✦  ✧  ✦  ✧  ✦";position:absolute;top:15px;right:16px;color:#ffffff24;font-size:1.3rem}
+.hero h1{font-size:clamp(1.9rem,6vw,3.2rem);line-height:1.15;margin:0 0 12px;text-shadow:2px 2px #5c35a7}
+.hero h1 .accent{color:var(--cyan)}
+.hero p{max-width:700px;margin:0 auto;color:var(--muted);font-size:1.06rem}
+.hero .pixel-line{margin-top:22px;color:var(--yellow);font-size:.8rem}
+.section{margin:30px 0}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:15px}
+.section-head .icon{font-size:1.7rem}
+h2{font-size:clamp(1.35rem,4vw,1.9rem);margin:0}
+.section-intro{color:var(--muted);margin:0 0 18px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px}
+.info-box{border-left:4px solid var(--cyan);background:#122827;padding:15px 17px;border-radius:8px;color:#d9fffb;margin:16px 0}
+.console-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.console{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:13px;padding:17px;display:flex;flex-direction:column;gap:8px}
+.console h3{margin:0;font-size:1.08rem;color:var(--yellow)}
+.console p{margin:0;color:var(--muted);font-size:.93rem}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:8px}
+.download-password{display:block;color:var(--yellow);font-size:.88rem;margin-top:5px;font-weight:700}
+.console .video-wrap{margin-top:10px}
+.action{display:inline-block;border:1px solid #3e6570;border-radius:8px;padding:8px 11px;font-weight:700;font-size:.88rem}
+.action.download{background:#103432;color:var(--cyan)}
+.action.video{background:#30213a;color:#ff9cdb;border-color:#754a75}
+.guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.guide-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
+.download-center{text-align:center;margin-top:18px;padding:18px;background:#111c2a;border:1px solid #31535d;border-radius:14px}
+.download-center .action{display:inline-block;padding:11px 20px;font-size:1rem;margin-bottom:8px}
+.download-center .password{color:var(--yellow);font-weight:800;font-size:1rem;margin:4px 0 0}
+.placeholder-image{aspect-ratio:16/9;display:grid;place-items:center;text-align:center;border:2px dashed #66618d;border-radius:12px;background:linear-gradient(135deg,#1c1b37,#152c2d);color:var(--muted);padding:18px;margin:12px 0}
+.placeholder-image .emoji{font-size:3rem;display:block}
+.video-wrap{position:relative;width:100%;aspect-ratio:16/9;background:#080810;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:12px}
+.video-wrap iframe{width:100%;height:100%;border:0}
+.steps{padding-left:1.25rem;color:var(--muted)}.steps li{margin:7px 0}
+.note{font-size:.88rem;color:var(--muted)}
+footer{text-align:center;border-top:1px solid var(--line);padding:28px 18px;color:#8f93b2}
+footer strong{color:var(--cyan)}
+#logout{background:none;border:1px solid var(--line);border-radius:8px;color:var(--muted);padding:6px 9px;cursor:pointer;font-size:.82rem}
+@media(max-width:700px){.nav{align-items:flex-start;flex-direction:column}nav{justify-content:flex-start}.guide-grid{grid-template-columns:1fr}.hero{padding:38px 16px 30px}.panel,.guide-card{padding:15px}}
+</style>
+</head>
+<body>
+<section id="gate">
+  <div class="login-card">
+    <div class="brand-mark pixel">IMPUL<span>GAMES</span></div>
+    <p class="subtitle">Portal de instalación · acceso para jugadores</p>
+    <form id="login-form">
+      <label for="password">Ingresá tu contraseña para continuar</label>
+      <input id="password" type="password" inputmode="numeric" autocomplete="off" placeholder="•••••" required>
+      <button class="primary" type="submit">▶ ENTRAR</button>
+      <p id="error" aria-live="polite"></p>
+    </form>
+    <div class="gate-foot pixel">INSERT COIN · PRESS START</div>
+  </div>
+</section>
+
+<div id="site">
+<header>
+  <div class="nav">
+    <div class="small-brand pixel">IMPUL<span>GAMES</span></div>
+    <nav>
+      <a href="#android">📱 Android</a><a href="#iphone">🍏 iPhone</a><a href="#pc">💻 PC</a>
+      <button id="logout">Salir</button>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1>¡Gracias por descargar<br><span class="accent">ImpulGames!</span></h1>
+    <p>Prepará tus controles y volvé a disfrutar esos clásicos que nunca pasan de moda. Acá tenés las guías para instalar y empezar a jugar.</p>
+    <div class="pixel-line pixel">★ PLAYER 1 READY ★</div>
+  </section>
+
+  <section id="android" class="section">
+    <div class="section-head"><span class="icon">📱</span><h2>Guía de instalación para Android</h2></div>
+    <div class="guide-grid">
+      <article class="guide-card">
+        <h3>🖼️ Imagen de guía</h3>
+        <div class="placeholder-image"><div><span class="emoji">📲</span><strong>IMAGEN DE INSTALACIÓN ANDROID</strong><br><span class="note">Reemplazá este recuadro por tu captura o imagen tutorial.</span></div></div>
+        <p class="note">Pasos simples, con capturas, para que todos puedan instalarlo.</p>
+      </article>
+      <article class="guide-card">
+        <h3>🎥 Video tutorial</h3>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/IOha41Yn6J8" title="Video de ejemplo Android: reemplazar video" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div>
+        <p class="note">Video provisorio de ejemplo: reemplazalo por el tutorial de Android.</p>
+      </article>
+    </div>
+    <div class="download-center">
+      <a class="action download" href="#" target="_blank" rel="noopener">⬇ Descargar para Android</a>
+      <p class="password">🔑 Contraseña: 1515</p>
+      <p class="note">Reemplazá el enlace del botón por tu link de descarga.</p>
+    </div>
+  </section>
+
+  <section id="iphone" class="section">
+    <div class="section-head"><span class="icon">🍏</span><h2>Guía de instalación para iPhone</h2></div>
+    <div class="guide-grid">
+      <article class="guide-card">
+        <h3>🖼️ Imagen de guía</h3>
+        <div class="placeholder-image"><div><span class="emoji">📱</span><strong>IMAGEN DE INSTALACIÓN IPHONE</strong><br><span class="note">Reemplazá este recuadro por tu captura o imagen tutorial.</span></div></div>
+        <p class="note">Una guía visual con los pasos para iOS.</p>
+      </article>
+      <article class="guide-card">
+        <h3>🎥 Video tutorial</h3>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/JEcFatQkIgc" title="Video de ejemplo iPhone: reemplazar video" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div>
+        <p class="note">Video provisorio de ejemplo: reemplazalo por el tutorial de Android.</p>
+      </article>
+    </div>
+    <div class="download-center">
+      <a class="action download" href="#" target="_blank" rel="noopener">⬇ Descargar para iPhone</a>
+      <p class="password">🔑 Contraseña: 1515</p>
+      <p class="note">Reemplazá el enlace del botón por tu link de descarga.</p>
+    </div>
+  </section>
+  <section id="pc" class="section">
+    <div class="section-head"><span class="icon">💻</span><h2>Guía de instalación para PC</h2></div>
+    <div class="panel">
+      <p>¡Aquí están los juegos Retro! Están divididos por consola para que sea más fácil, puedas descargar el que más te guste… ¡o todos para obtener la colección completa! 😉</p>
+      <div class="info-box">📦 <strong>Recomendación:</strong> descargá los juegos de a uno. Cuando termine una descarga, continuá con la siguiente para evitar que se mezclen los archivos.</div>
+      <div class="console-grid">
+        <article class="console">
+          <h3>🕹️ Juegos de SEGA</h3><p>Descargá la colección y seguí la guía de instalación y configuración de mandos.</p>
+          <div class="actions"><a class="action download" href="https://cutt.ly/0wlPzW6P" target="_blank" rel="noopener">⬇ Descargar</a></div><span class="download-password">🔑 Contraseña: 1515</span><div class="video-wrap"><iframe src="https://www.youtube.com/embed/IOha41Yn6J8" title="Guía de instalación SEGA" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div>
+        </article>
+        <article class="console">
+          <h3>🕹️ Juegos de FAMILY</h3><p>Clásicos de 8 bits para revivir las tardes de juego.</p>
+          <div class="actions"><a class="action download" href="https://cutt.ly/NwlPjQ8m" target="_blank" rel="noopener">⬇ Descargar</a></div><span class="download-password">🔑 Contraseña: 1515</span><div class="video-wrap"><iframe src="https://www.youtube.com/embed/1898q_pEqts" title="Guía de instalación FAMILY" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div>
+        </article>
+        <article class="console">
+          <h3>🕹️ Juegos de MAME</h3><p>Arcades clásicos. Mirá el video para aprender la instalación y los mandos.</p>
+          <div class="actions"><a class="action download" href="https://cutt.ly/ewlPjXgL" target="_blank" rel="noopener">⬇ Descargar</a></div><span class="download-password">🔑 Contraseña: 1515</span><div class="video-wrap"><iframe src="https://www.youtube.com/embed/T0dhrH_RcWc" title="Guía de instalación MAME" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div>
+        </article>
+        <article class="console">
+          <h3>🕹️ Súper Nintendo</h3><p>La colección de clásicos de 16 bits. Se instala igual que las anteriores.</p>
+          <div class="actions"><a class="action download" href="https://cutt.ly/jwlPzVwn" target="_blank" rel="noopener">⬇ Descargar</a></div><span class="download-password">🔑 Contraseña: 1515</span>
+        </article>
+        <article class="console">
+          <h3>🕹️ Nintendo 64</h3><p>Descargá y extraé los archivos para empezar.</p>
+          <div class="actions"><a class="action download" href="https://cutt.ly/9wlPlRvG" target="_blank" rel="noopener">⬇ Descargar</a></div><span class="download-password">🔑 Contraseña: 1515</span>
+        </article>
+        <article class="console">
+          <h3>🕹️ Marvel vs. Capcom</h3><p>Prepará tus combates y volvé a jugar estos clásicos.</p>
+          <div class="actions"><a class="action download" href="https://cutt.ly/MwlPkrJa" target="_blank" rel="noopener">⬇ Descargar</a></div><span class="download-password">🔑 Contraseña: 1515</span>
+        </article>
+        <article class="console">
+          <h3>🕹️ NeoGeo</h3><p>Arcade en casa. Se instala igual que los anteriores.</p>
+          <div class="actions"><a class="action download" href="https://cutt.ly/6wlPlyET" target="_blank" rel="noopener">⬇ Descargar</a></div><span class="download-password">🔑 Contraseña: 1515</span>
+        </article>
+        <article class="console">
+          <h3>🕹️ PlayStation 1</h3><p>Consultá el video para ver cómo instalar y configurar los mandos.</p>
+          <div class="actions"><a class="action download" href="https://cutt.ly/kwlPlX2B" target="_blank" rel="noopener">⬇ Descargar</a></div><span class="download-password">🔑 Contraseña: 1515</span><div class="video-wrap"><iframe src="https://www.youtube.com/embed/JEcFatQkIgc" title="Guía de instalación PlayStation 1" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div>
+        </article>
+      </div>
+      <div class="info-box">🧰 <strong>¿No podés descomprimir los archivos?</strong> Instalá el programa necesario desde <a href="https://cutt.ly/GwlPxuZ4" target="_blank" rel="noopener">este enlace</a> y probá nuevamente.</div>
+      <p class="note">Saludos, ¡el equipazo de ImpulGames!</p>
+    </div>
+  </section>
+
+</main>
+<footer>🎮 <strong>ImpulGames</strong> · La nostalgia, al alcance de un clic.</footer>
+</div>
+<script>
+const form = document.getElementById('login-form');
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  const entered = document.getElementById('password').value;
+  if(entered === '15214'){
+    document.getElementById('gate').style.display='none';
+    document.getElementById('site').style.display='block';
+    document.getElementById('error').textContent='';
+    window.scrollTo(0,0);
+  }else{
+    document.getElementById('error').textContent='Contraseña incorrecta. Revisá e intentá nuevamente.';
+  }
+});
+document.getElementById('logout').addEventListener('click', function(){
+  document.getElementById('site').style.display='none';
+  document.getElementById('gate').style.display='grid';
+  document.getElementById('password').value='';
+  window.scrollTo(0,0);
+});
+</script>
+</body>
+</html>
