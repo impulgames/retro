@@ -64,6 +64,10 @@ h2{font-size:clamp(1.35rem,4vw,1.9rem);margin:0}
 .action.download{background:#103432;color:var(--cyan)}
 .action.video{background:#30213a;color:#ff9cdb;border-color:#754a75}
 .guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.android-guide-grid{display:grid;grid-template-columns:1fr 1fr 1.35fr;gap:14px;align-items:stretch}
+.guide-images{display:grid;grid-template-columns:1fr 1fr;gap:10px;min-width:0}
+.guide-images img{display:block;width:100%;height:100%;max-height:360px;object-fit:contain;background:#080810;border:1px solid var(--line);border-radius:10px}
+@media(max-width:700px){.android-guide-grid{grid-template-columns:1fr}.guide-images{grid-template-columns:1fr 1fr}.guide-images img{height:auto;max-height:none}}
 .guide-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
 .download-center{text-align:center;margin-top:18px;padding:18px;background:#111c2a;border:1px solid #31535d;border-radius:14px}
 .download-center .action{display:inline-block;padding:11px 20px;font-size:1rem;margin-bottom:8px}
@@ -114,16 +118,19 @@ footer strong{color:var(--cyan)}
 
   <section id="android" class="section">
     <div class="section-head"><span class="icon">📱</span><h2>Guía de instalación para Android</h2></div>
-    <div class="guide-grid">
+    <div class="android-guide-grid">
       <article class="guide-card">
-        <h3>🖼️ Imagen de guía</h3>
-        <div class="placeholder-image"><div><span class="emoji">📲</span><strong>IMAGEN DE INSTALACIÓN ANDROID</strong><br><span class="note">Reemplazá este recuadro por tu captura o imagen tutorial.</span></div></div>
-        <p class="note">Pasos simples, con capturas, para que todos puedan instalarlo.</p>
+        <h3>🖼️ Imagen 1</h3>
+        <img src="https://raw.githubusercontent.com/impulgames/retro/main/ima1.jpeg" alt="Tutorial de instalación Android, imagen 1" loading="lazy" style="display:block;width:100%;height:100%;max-height:360px;object-fit:contain;background:#080810;border:1px solid var(--line);border-radius:10px">
+      </article>
+      <article class="guide-card">
+        <h3>🖼️ Imagen 2</h3>
+        <img src="https://raw.githubusercontent.com/impulgames/retro/main/ima2.jpeg" alt="Tutorial de instalación Android, imagen 2" loading="lazy" style="display:block;width:100%;height:100%;max-height:360px;object-fit:contain;background:#080810;border:1px solid var(--line);border-radius:10px">
       </article>
       <article class="guide-card">
         <h3>🎥 Video tutorial</h3>
-        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/IOha41Yn6J8" title="Video de ejemplo Android: reemplazar video" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div>
-        <p class="note">Video provisorio de ejemplo: reemplazalo por el tutorial de Android.</p>
+        <div class="video-wrap"><iframe src="https://www.youtube.com/embed/IOha41Yn6J8" title="Video tutorial de instalación Android" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe></div>
+        <p class="note">Seguí el video para completar la instalación.</p>
       </article>
     </div>
     <div class="download-center">
